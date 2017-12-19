@@ -1,0 +1,24 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <strong>Doodles en cours:</strong></h3>
+    </div>
+  </div>
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Resultat</th>
+      <th>Participants</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doodleResult of doodleResults">
+      <td>
+        <a [routerLink]="['doodle', doodleResult.doodle.id]">{{doodleResult.doodle.label}}</a>
+      </td>
+      <td>{{doodleResult.selectedOption?.label}}</td>
+      <td>{{doodleResult.participantsCount}}</td>
+    </tr>
+  </tbody>
+</table>

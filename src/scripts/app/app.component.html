@@ -1,0 +1,18 @@
+<header>
+  <nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+      <li [class.active]="selectedDoodle == null">
+        <a [routerLink]="['']">Dashboard</a>
+      </li>
+      <li *ngIf="selectedDoodle != null" class="active">
+        <a>
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          {{selectedDoodle.doodle.label}}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,37 @@
+<div *ngIf="doodleResult">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <strong>Doodle</strong>: {{doodleResult.doodle.label}}</h3>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Participant</th>
+        <th *ngFor="let option of doodleResult.doodle.options">{{option.label}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let participant of participantList">
+        <td>{{participant}}</td>
+        <td *ngFor="let option of doodleResult.doodle.options">
+          <div class="option-status" [class.selected]="doodleResult.isOptionSelected(participant, option.id)" (click)="toggleOptionSelection(participant, option.id)">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td [attr.colspan]="1 + doodleResult.doodle.options.length">
+          <form class="form-inline">
+            <div class="form-group">
+              <label>Nouveau participant:</label>
+              <input type="text" class="form-control" #newParticipant>
+            </div>
+            <button class="btn btn-default" (click)="addParticipant(newParticipant.value); newParticipant.value = '';">Ajouter</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
